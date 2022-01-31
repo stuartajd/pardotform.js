@@ -1,5 +1,5 @@
 <!-- Emit script that will output to the parent with the current form URL included -->
-<script>function emit(method, value){ window.parent.postMessage({form: "%%form-action-url%%", method: method, value: (value || null)}, "*"); }</script>
+<script>function emit(method, value){ window.parent.postMessage({form: "%%form-action-url%%", method: method, value: value}, "*"); }</script>
 
 <!-- Call the emit method on form submission -->
 <form accept-charset="UTF-8" method="post" action="%%form-action-url%%" class="form" id="pardot-form" onsubmit="emit('submit')">
