@@ -7,7 +7,7 @@
 class PardotForm {
 	constructor(url, config){
 		this.formUrl = url;
-		this.config = config || {};
+		this.config = Object.assign({ resize: true }, config);
 		this.loaded = false;
 		this.callbacks = {
 			load: [],
@@ -53,12 +53,26 @@ class PardotForm {
 		if(this.loaded === true) return;
 		this.loaded = true;
 		this.hasEvent(event, data);
+
+		this.trackFormResize();
 	}.bind(this));
 
 	hasResized = (function(event, data) {
 		if(!this.getFormElem()) return;
 		if(!this.config.resize) return;
-		this.getFormElem().height = data.value.toString() + "px";
+		this.getFormElem().height = data.value;
+	}.bind(this));
+
+	trackFormResize = (function() {
+		if(!this.getFormElem()) return;
+		if(!this.config.resize) return;
+		this.getFormElem().contentWindow.addEventListener('resize', function() {			
+			this.emit('resize');
+		}.bind(this));
+	}.bind(this));
+
+	emit = (function(method, value){		
+		this.getFormElem().contentWindow.postMessage({form: this.getUrl(), method: method, value: value}, "*")
 	}.bind(this));
 
 	startCapture = function() {

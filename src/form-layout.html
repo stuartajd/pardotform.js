@@ -59,9 +59,24 @@
 %%form-javascript-link-target-top%%
 
 <script>
-	var body = document.body, html = document.documentElement;
-	var height = Math.max( body.scrollHeight, body.offsetHeight, 
-					html.clientHeight, html.scrollHeight, html.offsetHeight );
-	window.addEventListener('DOMContentLoaded', emit('resize', height))
+	function emitHeightUpdate() {
+		var body = document.body, html = document.documentElement;
+		var height = Math.max( body.scrollHeight, body.offsetHeight, 
+					html.clientHeight, html.scrollHeight, html.offsetHeight);
+		emit('resize', height)
+	}
+	window.addEventListener('load', emitHeightUpdate)
+	window.addEventListener("message", function(event) {
+		if(!event.data.form) return;
+		if(event.data.form !== "%%form-action-url%%") return;
+		if(!event.data.method) return;
+		
+		var statusFunctionMap = {
+			"resize": emitHeightUpdate
+		};
+
+		if(!statusFunctionMap[event.data.method]) return;
+		statusFunctionMap[event.data.method](event.data.method, event.data);		
+	})
 </script>
 </form>
