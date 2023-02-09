@@ -66,7 +66,7 @@ class PardotForm {
 	trackFormResize = (function() {
 		if(!this.getFormElem()) return;
 		if(!this.config.resize) return;
-		this.getFormElem().contentWindow.addEventListener('resize', function() {			
+		window.addEventListener('resize', function() {			
 			this.emit('resize');
 		}.bind(this));
 	}.bind(this));
