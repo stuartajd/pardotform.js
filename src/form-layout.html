@@ -57,4 +57,11 @@
 %%form-end-if-display-form%%
 
 %%form-javascript-link-target-top%%
+
+<script>
+	var body = document.body, html = document.documentElement;
+	var height = Math.max( body.scrollHeight, body.offsetHeight, 
+					html.clientHeight, html.scrollHeight, html.offsetHeight );
+	window.addEventListener('DOMContentLoaded', emit('resize', height))
+</script>
 </form>
