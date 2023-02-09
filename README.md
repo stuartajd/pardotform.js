@@ -40,7 +40,7 @@ The main `src/pardotform.js` script should then be included on the outer page, t
 
 | Method | Description | Parameters |
 | ----- | ----- | ----- |
-| resize | The iFrame can be automatically resized on load, this config option will enable this functionality. | Default: `"resize": true`
+| resize | The form height can be automatically resized when the outer page is resized. | Default: `"resize": true`
 
 ## Usage
 
