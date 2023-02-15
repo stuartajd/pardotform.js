@@ -2,7 +2,7 @@
  * PardotForm.js
  *
  * Pardot Form JS API, similar to the Marketo Forms2 JS API.
- * @version 0.2
+ * @version 0.3
  */
 class PardotForm {
 	constructor(url, config){
@@ -31,7 +31,7 @@ class PardotForm {
 	onValidate = function(callback) { return this.bindCallback("validate", callback) };
 	onSuccess = function(callback) { return this.bindCallback("success", callback) };
 	getFormElem = function() { 
-		return document.querySelector("iframe[src='"+ this.formUrl +"']");
+		return document.querySelector("iframe[src^='"+ this.formUrl +"']");
 	};
 	getUrl = function() { return this.formUrl }
 	
