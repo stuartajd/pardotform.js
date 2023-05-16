@@ -34,7 +34,7 @@ The main `src/pardotform.js` script should then be included on the outer page, t
 | .onSuccess()         	| Adds a callback that is triggered when the submission was successful.                                                                   	| callback   	|
 | .getFormElem()       	| Returns the container element for the embedded form.                                                                                    	|            	|
 | .getUrl()       	| Returns the Pardot form URL.                                                                                    	|            	|
-
+| .resize()       	| Trigger a resize of the Pardot iFrame based off the contents height, will not resize if the `resize` option is disabled in config.                                                                                    	|            	|
 
 ## Config
 

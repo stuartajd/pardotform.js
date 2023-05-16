@@ -61,10 +61,10 @@
 <script>
 	function emitHeightUpdate() {
 		var body = document.body, html = document.documentElement;
-		var height = Math.max( body.scrollHeight, body.offsetHeight, 
-					html.clientHeight, html.scrollHeight, html.offsetHeight);
+		var height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
 		emit('resize', height)
-	}
+	}	
+	window.addEventListener('resize', emitHeightUpdate)
 	window.addEventListener('load', emitHeightUpdate)
 	window.addEventListener("message", function(event) {
 		if(!event.data.form) return;

@@ -34,6 +34,7 @@ class PardotForm {
 		return document.querySelector("iframe[src^='"+ this.formUrl +"']");
 	};
 	getUrl = function() { return this.formUrl }
+	resize = function() { this.emit('resize') }
 	
 	hasEvent = (function(event, data) {
 		this.callbacks[event].forEach(function(callback) {
